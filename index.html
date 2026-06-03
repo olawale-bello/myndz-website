@@ -345,6 +345,9 @@ document.addEventListener('click',(e)=>{
       vid.muted=!vid.muted;
       e.target.classList.toggle('muted');
       e.target.classList.toggle('unmuted');
+      if(!vid.muted && vid.paused){
+        vid.play();
+      }
     }
   }
 });
