@@ -375,7 +375,12 @@ function go(id){
   const a=document.querySelector('.pg.on');
   if(a){
     a.style.opacity='0';
-    a.querySelectorAll('video').forEach(v=>{v.pause();v.muted=true;});
+    a.querySelectorAll('video').forEach(v=>{
+      v.pause();
+      v.currentTime=0;
+      v.muted=true;
+      v.volume=0;
+    });
     setTimeout(()=>{a.classList.remove('on');show(id);},250);
   }else show(id);
 }
