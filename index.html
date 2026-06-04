@@ -407,6 +407,49 @@ document.querySelectorAll('.fb').forEach(b=>{b.onclick=()=>{
   const f=b.dataset.f;
   document.querySelectorAll('.wfc').forEach(c=>{c.style.display=(f==='all'||(c.dataset.ct||'').includes(f))?'block':'none';});
 };});
+
+// CONTACT FORM SUBMISSION
+document.addEventListener('click',(e)=>{
+  if(e.target.classList.contains('bp')&&e.target.textContent.includes('Send Brief')){
+    e.preventDefault();
+    const form=e.target.closest('.co-pg');
+    if(!form) return;
+
+    const name=form.querySelector('input[placeholder="Full name"]').value;
+    const email=form.querySelector('input[placeholder="your@email.com"]').value;
+    const company=form.querySelector('input[placeholder="Who are we working with?"]').value;
+    const projectType=form.querySelector('select').value;
+    const brief=form.querySelector('textarea').value;
+
+    if(!name||!email||!brief){
+      alert('Please fill in all required fields');
+      return;
+    }
+
+    fetch('/api/send-email',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name,email,company,projectType,brief})
+    })
+    .then(r=>r.json())
+    .then(data=>{
+      if(data.success){
+        alert('Brief sent successfully! We will be in touch soon.');
+        form.querySelector('input[placeholder="Full name"]').value='';
+        form.querySelector('input[placeholder="your@email.com"]').value='';
+        form.querySelector('input[placeholder="Who are we working with?"]').value='';
+        form.querySelector('select').value='';
+        form.querySelector('textarea').value='';
+      }else{
+        alert('Error sending brief. Please try again.');
+      }
+    })
+    .catch(err=>{
+      console.error(err);
+      alert('Error sending brief. Please try again.');
+    });
+  }
+});
 </script>
 </body>
 </html>
