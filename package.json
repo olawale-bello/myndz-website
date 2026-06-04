@@ -1,0 +1,16 @@
+{
+  "name": "myndz-website",
+  "version": "1.0.0",
+  "description": "Myndzone Media portfolio website",
+  "main": "index.html",
+  "dependencies": {
+    "resend": "^3.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "echo 'Static site - no build needed'"
+  },
+  "keywords": [],
+  "author": "Olawale Bello",
+  "license": "ISC"
+}
