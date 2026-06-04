@@ -111,6 +111,10 @@ footer{background:var(--bk);border-top:1px solid var(--bd);padding:24px 56px;dis
 @keyframes mqk{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
 
+@media(min-width:1200px){
+  .pg > div[style*="grid-template-columns"]{grid-template-columns:1fr 1.3fr!important;}
+}
+
 @media(max-width:900px){
   nav{padding:0 20px;height:64px;}.nv{display:none;}
   .hero{padding:0 20px 72px;}.hero-yr{display:none;}
