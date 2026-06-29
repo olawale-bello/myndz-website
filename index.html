@@ -44,7 +44,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
 <style>
 @font-face{font-family:'FilmingFont';src:url('/fonts/Filming-Regular.otf') format('opentype');font-weight:900;}
-:root{--bk:#080808;--wh:#F2F0EB;--or:#FF5C1A;--gy:#111;--md:#1C1C1C;--cd:#141414;--bd:#222;--mu:#555;--dm:rgba(242,240,235,.55);--df:'FilmingFont',sans-serif;--bf:'DM Sans',sans-serif;--mf:'Space Mono',monospace;}
+:root{--bk:#080808;--wh:#F2F0EB;--or:#DAFF02;--gy:#111;--md:#1C1C1C;--cd:#141414;--bd:#222;--mu:#555;--dm:rgba(242,240,235,.55);--df:'FilmingFont',sans-serif;--bf:'DM Sans',sans-serif;--mf:'Space Mono',monospace;}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 h1,h2,h3{font-size:inherit;font-weight:inherit;}
 html{scroll-behavior:smooth;}
@@ -54,8 +54,8 @@ body{background:var(--bk);color:var(--wh);font-family:var(--bf);font-weight:300;
 .pg{display:none;opacity:0;transition:opacity .4s ease;}.pg.on{display:block;opacity:1;}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:72px;background:rgba(8,8,8,.94);backdrop-filter:blur(24px);border-bottom:1px solid var(--bd);}
-.nl{font-family:var(--df);font-size:20px;letter-spacing:.04em;color:var(--wh);text-decoration:none;cursor:pointer;}.nl span{color:var(--or);}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:72px;background:transparent;backdrop-filter:none;border-bottom:none;}
+.nl{display:flex;align-items:center;text-decoration:none;cursor:pointer;}.nl img{height:40px;width:auto;}.nl span{color:var(--or);}
 .nv{display:flex;gap:0;list-style:none;}.nv a{font-family:var(--mf);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--mu);text-decoration:none;padding:8px 16px;display:block;transition:color .2s;cursor:pointer;}.nv a:hover,.nv a.ac{color:var(--wh);}.nv a.ac{color:var(--or);}
 .nc{font-family:var(--mf);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--bk);background:var(--or);padding:9px 20px;text-decoration:none;transition:background .2s;cursor:pointer;}.nc:hover{background:var(--wh);}
 
@@ -178,7 +178,7 @@ footer{background:var(--bk);border-top:1px solid var(--bd);padding:24px 56px;dis
 <body>
 
 <nav>
-  <a class="nl" onclick="go('home')">Myndzone Media<span>®</span></a>
+  <a class="nl" onclick="go('home')"><img src="./logo.svg" alt="Myndzone Media"></a>
   <ul class="nv"><li><a onclick="go('home')" id="n-home" class="ac">Home</a></li><li><a onclick="go('work')" id="n-work">Work</a></li><li><a onclick="go('about')" id="n-about">Studio</a></li><li><a onclick="go('contact')" id="n-contact">Contact</a></li></ul>
   <a class="nc" onclick="go('contact')">Start a Project</a>
 </nav>
