@@ -56,7 +56,7 @@ body{background:var(--bk);color:var(--wh);font-family:var(--bf);font-weight:300;
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:72px;background:transparent;backdrop-filter:none;border-bottom:none;}
 .nl{display:flex;align-items:center;text-decoration:none;cursor:pointer;}.nl img{height:60px;width:auto;}.nl span{color:var(--or);}
-.nv{display:flex;gap:0;list-style:none;}.nv a{font-family:var(--mf);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--mu);text-decoration:none;padding:8px 16px;display:block;transition:color .2s;cursor:pointer;}.nv a:hover,.nv a.ac{color:var(--wh);}.nv a.ac{color:var(--or);}
+.nv{display:flex;gap:0;list-style:none;}.nv a{font-family:var(--mf);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--mu);text-decoration:none;padding:8px 16px;display:block;transition:color .2s;cursor:pointer;}.nv a:hover,.nv a.ac{color:var(--wh);}.nv a.ac{color:var(--or);}.nv-cta{display:none;}
 .nc{font-family:var(--mf);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--bk);background:var(--or);padding:9px 20px;text-decoration:none;transition:background .2s;cursor:pointer;}.nc:hover{background:var(--wh);}
 .nr{display:flex;align-items:center;gap:16px;}
 .nm-tog{display:none;flex-direction:column;justify-content:center;align-items:flex-end;gap:5px;width:28px;height:28px;background:none;border:none;cursor:pointer;padding:0;z-index:501;flex-shrink:0;}.nm-tog span{display:block;width:22px;height:1px;background:var(--wh);transition:transform .25s,opacity .25s,width .25s;}
@@ -178,12 +178,16 @@ footer{background:#000000;border-top:1px solid var(--bd);padding:88px 56px 32px;
 @media(max-width:900px){
   nav{padding:0 20px;height:64px;}
   .nm-tog{display:flex;}
+  .nr .nc{display:none;}
   .nv{display:none;}
   body.menu-open nav{background:var(--bk);}
   body.menu-open .nv{display:flex;flex-direction:column;align-items:stretch;position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--bk);padding:12px 20px 32px;gap:0;z-index:499;overflow-y:auto;}
   body.menu-open .nv li{border-bottom:1px solid var(--bd);}
   body.menu-open .nv a{font-family:var(--df);font-size:32px;letter-spacing:.02em;text-transform:uppercase;color:var(--wh);padding:20px 0;}
   body.menu-open .nv a.ac{color:var(--or);}
+  body.menu-open .nv-cta{display:block;margin-top:16px;}
+  body.menu-open .nv li.nv-cta{border-bottom:none;}
+  body.menu-open .nv-cta a{font-family:var(--mf);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--bk);background:var(--or);padding:18px 0;text-align:center;}
   body.menu-open{overflow:hidden;}
   .hero{padding:0 20px 72px;height:calc(56.25vw + 160px);min-height:calc(56.25vw + 160px);}.hero-yr{display:none;}
   #heroVideo{object-fit:contain!important;object-position:center top;}
@@ -216,7 +220,7 @@ footer{background:#000000;border-top:1px solid var(--bd);padding:88px 56px 32px;
 
 <nav>
   <a class="nl" onclick="go('home')"><img src="./logo.svg" alt="Myndzone Media"></a>
-  <ul class="nv"><li><a onclick="go('home')" id="n-home" class="ac">Home</a></li><li><a onclick="go('work')" id="n-work">Work</a></li><li><a onclick="go('about')" id="n-about">Studio</a></li><li><a onclick="go('contact')" id="n-contact">Contact</a></li></ul>
+  <ul class="nv"><li><a onclick="go('home')" id="n-home" class="ac">Home</a></li><li><a onclick="go('work')" id="n-work">Work</a></li><li><a onclick="go('about')" id="n-about">Studio</a></li><li><a onclick="go('contact')" id="n-contact">Contact</a></li><li class="nv-cta"><a onclick="go('contact')">Start a Project →</a></li></ul>
   <div class="nr">
     <a class="nc" onclick="go('contact')">Start a Project</a>
     <button class="nm-tog" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
