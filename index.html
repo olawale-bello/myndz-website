@@ -75,6 +75,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 
 /* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 56px 80px;position:relative;overflow:hidden;isolation:isolate;}
+.hero-video-blur{display:none;}
 .hero-aurora{position:absolute;inset:0;z-index:0;overflow:hidden;}
 .hero-aurora canvas{position:absolute;inset:0;width:100%;height:100%;}
 #heroCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:none;}
@@ -92,7 +93,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 .hw{padding:40px 56px 100px;}.hw-h{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:36px;}
 .g12{display:grid;grid-template-columns:repeat(12,1fr);gap:0;}
 .wc{position:relative;overflow:hidden;background:var(--cd);cursor:pointer;margin:1px;}
-.wc:nth-child(1){grid-column:span 7;padding-bottom:52%;}.wc:nth-child(2){grid-column:span 5;padding-bottom:65%;}.wc:nth-child(3){grid-column:span 5;padding-bottom:52%;}.wc:nth-child(4){grid-column:span 4;padding-bottom:65%;}.wc:nth-child(5){grid-column:span 3;padding-bottom:80%;}.wc:nth-child(6){grid-column:span 12;padding-bottom:28%;}.wc:nth-child(7){grid-column:span 12;padding-bottom:28%;}
+.wc:nth-child(1){grid-column:span 7;padding-bottom:52%;}.wc:nth-child(2){grid-column:span 5;padding-bottom:65%;}.wc:nth-child(3){grid-column:span 5;padding-bottom:65%;}.wc:nth-child(4){grid-column:span 7;padding-bottom:52%;}
+.hw-more{display:flex;justify-content:center;margin-top:32px;}
 .wc-im{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(15%) brightness(.82);transition:filter .6s,transform .7s;}.wc:hover .wc-im{filter:grayscale(0%) brightness(1);transform:scale(1.05);}
 .wc-lb{position:absolute;bottom:0;left:0;right:0;z-index:3;background:rgba(8,8,8,.82);backdrop-filter:blur(6px);padding:11px 18px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--bd);transition:background .3s,border-color .3s;}.wc:hover .wc-lb{background:rgba(255,92,26,.1);border-color:rgba(255,92,26,.3);}
 .wc-n{font-family:var(--df);font-size:18px;letter-spacing:.04em;text-transform:uppercase;}.wc-c{font-family:var(--mf);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);}
@@ -155,12 +157,14 @@ footer{background:#000000;border-top:1px solid var(--bd);padding:24px 56px;displ
   nav{padding:0 20px;height:64px;}.nv{display:none;}
   .hero{padding:0 20px 72px;}.hero-yr{display:none;}
   #heroVideo{object-fit:contain!important;}
+  .hero-video-blur{display:block;filter:blur(40px) brightness(.45) saturate(1.3);transform:scale(1.2);}
+  .hero-mesh{background:linear-gradient(180deg,rgba(8,8,8,.15) 0%,rgba(8,8,8,.35) 55%,rgba(8,8,8,.88) 100%);}
   .hw,.ab-hero,.ab-story,.ab-vals,.ab-srv,.ab-team,.wfg,.cs-imp,.cs-bd,.cs-gl,.cs-nxt,.co-pg,.wp-hero,.bio{padding-left:20px!important;padding-right:20px!important;}
   .bio{flex-direction:column;gap:28px;}
   .ab-hero,.ab-story,.co-grid,.cs-bd{grid-template-columns:1fr;gap:40px;}
   .stb,.cs-mg{grid-template-columns:1fr 1fr;}
   .wfg,.vg,.tg,.srv-r{grid-template-columns:1fr;}
-  .g12{grid-template-columns:1fr!important;}.wc:nth-child(n){grid-column:span 1;padding-bottom:65%;}.wc:nth-child(6){padding-bottom:45%;}.wc:nth-child(7){padding-bottom:45%;}
+  .g12{grid-template-columns:1fr!important;}.wc:nth-child(n){grid-column:span 1;padding-bottom:65%;}
   .cs-meta{grid-template-columns:1fr 1fr;}
   .cs-gl-2{grid-template-columns:1fr;}
   footer{flex-direction:column;gap:12px;text-align:center;padding:24px 20px;}
@@ -187,6 +191,9 @@ footer{background:#000000;border-top:1px solid var(--bd);padding:24px 56px;displ
 <!-- HOME -->
 <div class="pg on" id="p-home">
   <section class="hero">
+    <video id="heroVideoBlur" class="hero-video-blur" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" autoplay muted loop playsinline aria-hidden="true" tabindex="-1">
+      <source src="/myndz_reel.mp4" type="video/mp4">
+    </video>
     <video id="heroVideo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;" autoplay muted loop playsinline poster="/myndz_poster.webp">
       <source src="/myndz_reel.mp4" type="video/mp4">
     </video>
@@ -215,10 +222,8 @@ footer{background:#000000;border-top:1px solid var(--bd);padding:24px 56px;displ
       <div class="wc" onclick="go('cs-divest')"><img loading="lazy" decoding="async" class="wc-im" src="https://framerusercontent.com/images/M4SIBDqYPKp9HvX7yiOd0I9Tyk.gif" alt="Divest crypto exchange social media campaign design"><div class="wc-lb"><span class="wc-n">Divest</span><span class="wc-c">Digital Marketing</span></div></div>
       <div class="wc" onclick="go('cs-reloc8')"><img loading="lazy" decoding="async" class="wc-im" src="https://framerusercontent.com/images/CjuLmXxey5aDoxupdJz9UPrL0W0.jpg" alt="Reloc8 brand identity for Kigali ride-hailing and real estate startup"><div class="wc-lb"><span class="wc-n">Reloc8</span><span class="wc-c">Brand Identity</span></div></div>
       <div class="wc" onclick="go('cs-fund727')"><img loading="lazy" decoding="async" class="wc-im" src="https://framerusercontent.com/images/uPc426vKgmRam0ibR2N6oaGvt4.jpg" alt="GTBank Fund 727 investment fund explainer animation by Myndzone Media"><div class="wc-lb"><span class="wc-n">Fund 727</span><span class="wc-c">Animation</span></div></div>
-      <div class="wc" onclick="go('cs-nanobanana')"><img loading="lazy" decoding="async" class="wc-im" src="https://framerusercontent.com/images/R43GTDvUBU5rDljIVOugLECXPo.png" alt="Nano Banana AI-directed automotive visual exploration"><div class="wc-lb"><span class="wc-n">Nano Banana</span><span class="wc-c">Personal Project</span></div></div>
-      <div class="wc" onclick="go('cs-guava')"><img loading="lazy" decoding="async" class="wc-im" src="/GUAVA/1.webp" alt="Guava Homes luxury real estate brand identity by Myndzone Media"><div class="wc-lb"><span class="wc-n">Guava</span><span class="wc-c">Brand Identity</span></div></div>
-      <div class="wc" onclick="go('cs-mavie')"><img loading="lazy" decoding="async" class="wc-im" src="/mavie/1.webp" alt="Spaghetti on a fork — food art direction from the Mavie product video"><div class="wc-lb"><span class="wc-n">Mavie</span><span class="wc-c">Motion</span></div></div>
     </div>
+    <div class="hw-more"><a class="bo" onclick="go('work')">See More →</a></div>
   </div>
   <div class="stb"><div class="st"><div class="st-n">9+</div><div class="st-l">Years in the Industry</div></div><div class="st"><div class="st-n">500+</div><div class="st-l">Projects Delivered</div></div><div class="st"><div class="st-n">7+</div><div class="st-l">Markets Activated</div></div><div class="st"><div class="st-n">4.2M+</div><div class="st-l">Campaign Reach</div></div></div>
   <div class="bio"><div class="bio-t">We’re a multi-disciplinary studio blending design, strategy, and storytelling to build brands and experiences that feel <em>alive.</em></div><a class="bp" onclick="go('about')">About the Studio →</a></div>
